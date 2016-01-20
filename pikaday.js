@@ -177,8 +177,7 @@
      */
     defaults = {
 
-        // bind the picker to a form field
-        field: null,
+        now: function now() { return new Date()},
 
         // automatically show/hide the picker on `field` focus (default `true` if `field` is set)
         bound: undefined,
@@ -489,7 +488,7 @@
                 }
             }
             while ((pEl = pEl.parentNode));
-            
+
             if (!self._c) {
                 self._b = sto(function() {
                     self.hide();
@@ -921,7 +920,7 @@
         render: function(year, month)
         {
             var opts   = this._o,
-                now    = new Date(),
+                now    = opts.now(),
                 days   = getDaysInMonth(year, month),
                 before = new Date(year, month, 1).getDay(),
                 data   = [],
